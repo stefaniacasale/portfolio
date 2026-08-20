@@ -278,7 +278,8 @@ export const projects: ProjectItem[] = [
     period: "September 2023 to May 2024",
     body: "Took part in a 16 week volunteer program to revitalize social media for the non profit Eden Food for Change.",
     tags: [
-      { label: "Social media", icon: "share" },
+      { label: "Instagram", icon: "/logos/instagram.svg" },
+      { label: "TikTok", icon: "/logos/tiktok.svg" },
       { label: "Non profit", icon: "heart" },
     ],
   },

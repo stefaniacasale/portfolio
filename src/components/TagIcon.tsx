@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { HeartIcon, ShareIcon } from "./icons";
+import { HeartIcon } from "./icons";
 import LogoImage, { isLogoAsset } from "./LogoImage";
 
 /**
@@ -16,7 +16,6 @@ import LogoImage, { isLogoAsset } from "./LogoImage";
  */
 
 const glyphs: Record<string, ReactNode> = {
-  share: <ShareIcon className="size-4 text-ink/75" />,
   heart: <HeartIcon className="size-4 text-ink/75" />,
 };
 

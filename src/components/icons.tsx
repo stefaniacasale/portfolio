@@ -126,29 +126,6 @@ export function MapPinIcon({ className = "size-4" }: IconProps) {
   );
 }
 
-/** Three linked nodes, used for the "Social media" tag. */
-export function ShareIcon({ className = "size-4" }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      focusable="false"
-      className={className}
-    >
-      <circle cx="17.5" cy="5.5" r="2.6" />
-      <circle cx="6.5" cy="12" r="2.6" />
-      <circle cx="17.5" cy="18.5" r="2.6" />
-      <path d="M8.9 10.7 15.1 6.9" />
-      <path d="M8.9 13.3 15.1 17.1" />
-    </svg>
-  );
-}
-
 /** Heart held in an open hand, used for the "Non profit" tag. */
 export function HeartIcon({ className = "size-4" }: IconProps) {
   return (
