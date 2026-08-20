@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, Cambria,
+    "Times New Roman", Times, serif;
+
+  /* Palette */
+  --color-ivory: #f7f3ec;
+  --color-ink: #171512;
+  --color-line: #e4dac9;
+  --color-sand: #e7c9a9;
+  --color-sand-soft: #f1e4d2;
+  --color-panel: #191713;
+  --color-ivory-warm: #fdfbf7;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-sand);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid #171512;
+  outline-offset: 2px;
+}
+
+/*
+ * Hero display scale. The upper bound is set by the longest single word in the
+ * headline ("Communication"), which must never overflow the 7fr hero column.
+ */
+.hero-display {
+  font-size: clamp(2.125rem, calc(12.5vw - 0.4rem), 4rem);
+  line-height: 0.98;
+}
+
+@media (min-width: 1280px) {
+  .hero-display {
+    font-size: 4.5rem;
+  }
+}
+
+/* Focus ring for controls that sit on the dark panel surface. */
+.focus-light:focus-visible {
+  outline-color: var(--color-ivory);
+}
+
+/* Single page-load entrance for the hero. Nothing else animates on load. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-in,
+.rise-in-late {
+  animation: rise-in 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-in-late {
+  animation-delay: 110ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise-in,
+  .rise-in-late {
+    animation: none;
+  }
+}
