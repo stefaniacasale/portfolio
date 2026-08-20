@@ -18,7 +18,7 @@ export default function ProjectCard({ item }: ProjectCardProps) {
       <ul className="mt-auto flex flex-wrap gap-2 pt-8">
         {item.tags.map((tag) => (
           <li key={tag.label} className={tag.icon ? tagPillWithIcon : tagPill}>
-            <TagIcon icon={tag.icon} label={tag.label} />
+            <TagIcon icon={tag.icon} />
             {tag.label}
           </li>
         ))}

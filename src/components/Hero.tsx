@@ -81,11 +81,6 @@ export default function Hero() {
                   aria-hidden="true"
                   className="absolute top-[64%] left-1/2 h-px w-16 -translate-x-1/2 bg-line"
                 />
-                <span className="absolute inset-x-0 bottom-6 flex justify-center px-4">
-                  <span className="rounded-full border border-line bg-ivory-warm/80 px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-ink/70 uppercase">
-                    {site.location}
-                  </span>
-                </span>
               </>
             )}
           </div>

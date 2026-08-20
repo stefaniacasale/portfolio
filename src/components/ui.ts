@@ -7,11 +7,12 @@ export const container = "mx-auto w-full max-w-6xl px-6 sm:px-8";
 
 export const section = "py-16 lg:py-24";
 
+/**
+ * Small uppercase label. Only for lists that nothing else names, such as the
+ * carousel strip and the certifications list. Section titles carry themselves.
+ */
 export const kicker =
   "text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/65";
-
-export const kickerDark =
-  "text-[11px] font-semibold uppercase tracking-[0.18em] text-sand";
 
 const pillBase =
   "inline-flex max-w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-200";

@@ -1,9 +1,6 @@
 import type { ReactNode } from "react";
-import { kicker, kickerDark } from "./ui";
 
 type SectionHeadingProps = {
-  /** Small uppercase label sitting above the heading. */
-  label: string;
   children: ReactNode;
   tone?: "light" | "dark";
   size?: "md" | "lg";
@@ -16,22 +13,18 @@ const headingSize = {
 };
 
 export default function SectionHeading({
-  label,
   children,
   tone = "light",
   size = "md",
   className = "",
 }: SectionHeadingProps) {
   return (
-    <div className={className}>
-      <p className={tone === "dark" ? kickerDark : kicker}>{label}</p>
-      <h2
-        className={`mt-4 max-w-3xl text-balance font-extrabold leading-[1.02] tracking-tight ${
-          headingSize[size]
-        } ${tone === "dark" ? "text-ivory" : "text-ink"}`}
-      >
-        {children}
-      </h2>
-    </div>
+    <h2
+      className={`max-w-3xl text-balance font-extrabold leading-[1.02] tracking-tight ${
+        headingSize[size]
+      } ${tone === "dark" ? "text-ivory" : "text-ink"} ${className}`}
+    >
+      {children}
+    </h2>
   );
 }

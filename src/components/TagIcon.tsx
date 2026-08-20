@@ -3,13 +3,16 @@ import { HeartIcon, ShareIcon } from "./icons";
 import LogoImage, { isLogoAsset } from "./LogoImage";
 
 /**
- * Resolves a tag's `icon` value: a file under /public/logos, a hand authored
- * inline glyph, or "letter" for a named tool that has no mark of its own.
+ * Resolves a tag's `icon` value: a file under /public/logos, or a hand authored
+ * inline glyph. Tags with no icon render nothing here and sit in a plain pill.
  *
- * Tags with no icon render nothing here and sit in a plain pill. That split is
- * deliberate: a mark says "this is a product you could go and look up", so
- * practices like "Newsletter planning" are better with no mark than with a
- * placeholder standing in for one.
+ * That split is deliberate: a mark says "this is a product you could go and
+ * look up", so practices like "Newsletter planning" are better with no mark
+ * than with a placeholder standing in for one.
+ *
+ * The slot is a 20px tall band of flexible width rather than a square. Several
+ * of these platforms only publish a wordmark, and squeezing a 4:1 wordmark into
+ * a square box would shrink it past reading size.
  */
 
 const glyphs: Record<string, ReactNode> = {
@@ -19,14 +22,13 @@ const glyphs: Record<string, ReactNode> = {
 
 type TagIconProps = {
   icon?: string;
-  label: string;
 };
 
-export default function TagIcon({ icon, label }: TagIconProps) {
+export default function TagIcon({ icon }: TagIconProps) {
   if (isLogoAsset(icon)) {
     return (
       <span className="flex h-5 min-w-5 shrink-0 items-center justify-center">
-        <LogoImage src={icon} slot={20} maxWidth={48} />
+        <LogoImage src={icon} slot={20} maxWidth={80} />
       </span>
     );
   }
@@ -35,17 +37,6 @@ export default function TagIcon({ icon, label }: TagIconProps) {
     return (
       <span className="flex size-5 shrink-0 items-center justify-center">
         {glyphs[icon]}
-      </span>
-    );
-  }
-
-  if (icon === "letter") {
-    return (
-      <span
-        aria-hidden="true"
-        className="flex size-5 shrink-0 items-center justify-center rounded-md bg-sand-soft text-[10px] leading-none font-bold text-ink"
-      >
-        {label.charAt(0).toUpperCase()}
       </span>
     );
   }

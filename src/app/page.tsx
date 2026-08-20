@@ -71,8 +71,8 @@ export default function Home() {
 
         {/* About */}
         <section id="about" className={`${container} ${section}`}>
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <SectionHeading label="About" className="lg:sticky lg:top-28 lg:self-start">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <SectionHeading>
               <AccentText text={about.heading} accents={["me"]} />
             </SectionHeading>
             <div className="space-y-6">
@@ -87,9 +87,7 @@ export default function Home() {
 
         {/* Experience */}
         <section id="experience" className={`${container} ${section}`}>
-          <SectionHeading label="Professional experience">
-            Experience.
-          </SectionHeading>
+          <SectionHeading>Experience</SectionHeading>
           <div className="mt-12 flex flex-col gap-6 lg:mt-16">
             {experience.map((item) => (
               <ExperienceCard key={`${item.role}-${item.period}`} item={item} />
@@ -99,7 +97,7 @@ export default function Home() {
 
         {/* Projects */}
         <section id="projects" className={`${container} ${section}`}>
-          <SectionHeading label="Projects">Projects.</SectionHeading>
+          <SectionHeading>Projects</SectionHeading>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:mt-16">
             {projects.map((item) => (
               <ProjectCard key={item.title} item={item} />
@@ -109,9 +107,7 @@ export default function Home() {
 
         {/* Skills and certifications */}
         <section id="skills" className={`${container} ${section}`}>
-          <SectionHeading label="Skills and certifications">
-            Tools and certifications.
-          </SectionHeading>
+          <SectionHeading>Skills and Certifications</SectionHeading>
 
           <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:mt-16">
             {skills.map((group) => (
@@ -166,7 +162,7 @@ export default function Home() {
 
         {/* Education */}
         <section id="education" className={`${container} ${section}`}>
-          <SectionHeading label="Education">Education.</SectionHeading>
+          <SectionHeading>Education</SectionHeading>
           <div className="mt-12 rounded-3xl border border-line bg-sand-soft p-6 sm:p-8 lg:mt-16 lg:flex lg:items-center lg:gap-10 lg:p-10">
             <span className="inline-flex shrink-0 items-center justify-center rounded-2xl border border-line bg-ivory-warm px-5 py-4">
               <LogoImage src={education.logo} slot={52} maxWidth={160} />

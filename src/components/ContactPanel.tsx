@@ -13,7 +13,7 @@ export default function ContactPanel() {
   return (
     <section id="contact" className={`${container} py-16 lg:py-24`}>
       <div className="rounded-3xl bg-panel px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-        <SectionHeading label="Contact" tone="dark" size="lg">
+        <SectionHeading tone="dark" size="lg">
           <AccentText text={contact.heading} accents={["you"]} />
         </SectionHeading>
 

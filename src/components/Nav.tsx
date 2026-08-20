@@ -65,7 +65,7 @@ export default function Nav() {
         <a
           href="#top"
           aria-label={`${site.name}, back to top`}
-          className="group flex items-center gap-2.5 rounded-xl text-base font-extrabold tracking-tight whitespace-nowrap transition-colors duration-200 hover:text-ink/70"
+          className="group flex shrink-0 items-center rounded-xl"
         >
           <Image
             src="/branding/sc-monogram.png"
@@ -75,7 +75,6 @@ export default function Nav() {
             sizes="40px"
             className="h-10 w-10 rounded-xl transition-transform duration-200 group-hover:scale-[1.03]"
           />
-          <span>{site.name}</span>
         </a>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">

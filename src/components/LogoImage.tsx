@@ -24,6 +24,7 @@ type LogoAsset = {
 export const logoAssets: Record<string, LogoAsset> = {
   "/logos/adobe-cc.svg": { width: 240, height: 234 },
   "/logos/androidstudio.svg": { width: 24, height: 24 },
+  "/logos/booker.svg": { width: 147, height: 35, optical: 0.9 },
   "/logos/canva.svg": { width: 128, height: 128 },
   "/logos/dem.png": { width: 200, height: 200 },
   "/logos/eden.png": { width: 815, height: 434, optical: 0.95 },
@@ -35,7 +36,10 @@ export const logoAssets: Record<string, LogoAsset> = {
   "/logos/massageaddict.png": { width: 250, height: 89, optical: 0.72 },
   "/logos/mississauga.svg": { width: 140, height: 68 },
   "/logos/outlook.svg": { width: 1831, height: 1703 },
+  "/logos/providerconnect.png": { width: 350, height: 100, optical: 0.9 },
   "/logos/redcross.svg": { width: 100, height: 100 },
+  "/logos/sunlife.png": { width: 500, height: 123, optical: 0.9 },
+  "/logos/telus-health.svg": { width: 213, height: 28, optical: 0.9 },
   "/logos/uoft.svg": { width: 429, height: 159, optical: 0.8 },
   "/logos/wealthsimple-w.png": { width: 120, height: 120 },
   "/logos/wealthsimple.svg": { width: 1798, height: 296, optical: 0.45 },
@@ -51,6 +55,12 @@ type LogoImageProps = {
   slot: number;
   /** Upper bound on rendered width. Defaults to four slots. */
   maxWidth?: number;
+  /**
+   * Set only when the logo stands alone with no text beside it. It then carries
+   * the accessible name, and doubles as the fallback if the file fails to load.
+   * Left unset the logo is decorative, because adjacent text already names it.
+   */
+  alt?: string;
   className?: string;
 };
 
@@ -58,6 +68,7 @@ export default function LogoImage({
   src,
   slot,
   maxWidth,
+  alt,
   className = "",
 }: LogoImageProps) {
   const asset = logoAssets[src];
@@ -78,8 +89,8 @@ export default function LogoImage({
   return (
     <Image
       src={src}
-      alt=""
-      aria-hidden="true"
+      alt={alt ?? ""}
+      aria-hidden={alt ? undefined : "true"}
       width={asset.width}
       height={asset.height}
       // The optimizer refuses SVG unless dangerouslyAllowSVG is on, and these

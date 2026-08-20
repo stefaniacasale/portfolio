@@ -6,10 +6,9 @@
  * - Facts are taken verbatim from the resume. Do not embellish or reword.
  * - No phone number is stored here or anywhere in the site.
  *
- * Icon fields (`icon`, `logo`) hold either a path under /public/logos, the name
- * of a hand authored inline glyph, or "letter" for a tool that has no mark of
- * its own and takes a letter tile instead. An item with no icon at all is a
- * plain pill: skills that are practices rather than products carry no mark.
+ * Icon fields (`icon`, `logo`) hold either a path under /public/logos or the
+ * name of a hand authored inline glyph. An item with no icon at all is a plain
+ * pill: skills that are practices rather than products carry no mark.
  */
 
 export interface Site {
@@ -59,6 +58,12 @@ export interface ExperienceItem {
 export interface Tag {
   label: string;
   icon?: string;
+  /**
+   * The mark is a wordmark that already spells the name out, so the pill shows
+   * the logo alone and `label` becomes the image's alt text rather than visible
+   * copy. Used by the skill pills.
+   */
+  logoOnly?: boolean;
 }
 
 export interface ProjectItem {
@@ -142,6 +147,7 @@ export const organizations: Organization[] = [
   { name: "Massage Addict", logo: "/logos/massageaddict.png" },
   { name: "Innovative Business Association", logo: "/logos/iba.png" },
   { name: "Eden Food for Change", logo: "/logos/eden.png" },
+  { name: "DEM Association", logo: "/logos/dem.png" },
 ];
 
 export const about: About = {
@@ -296,10 +302,18 @@ export const skills: SkillGroup[] = [
     group: "Client and operations platforms",
     items: [
       { label: "JIRA", icon: "/logos/jira.svg" },
-      { label: "Booker", icon: "letter" },
-      { label: "Telus Health Portal", icon: "letter" },
-      { label: "Sun Life Portal", icon: "letter" },
-      { label: "ProviderConnect", icon: "letter" },
+      { label: "Booker", icon: "/logos/booker.svg", logoOnly: true },
+      {
+        label: "Telus Health Portal",
+        icon: "/logos/telus-health.svg",
+        logoOnly: true,
+      },
+      { label: "Sun Life Portal", icon: "/logos/sunlife.png", logoOnly: true },
+      {
+        label: "ProviderConnect",
+        icon: "/logos/providerconnect.png",
+        logoOnly: true,
+      },
     ],
   },
   {
