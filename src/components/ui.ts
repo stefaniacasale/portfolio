@@ -24,11 +24,17 @@ export const pillSand = `${pillBase} focus-light bg-sand text-ink hover:bg-sand-
 
 export const pillOutlineLight = `${pillBase} focus-light border border-ivory/40 text-ivory hover:border-ivory hover:bg-ivory/10`;
 
-export const tagPill =
-  "rounded-full border border-line bg-ivory px-3 py-1 text-xs font-medium text-ink/70";
+/**
+ * Skill and project tags. Practices ("Newsletter planning") are plain; named
+ * tools and platforms lead with a 20px mark, which needs the left padding
+ * tightened to seat it. Both keep the same height and text treatment.
+ */
+const tagPillBase =
+  "inline-flex min-h-[1.875rem] items-center rounded-full border border-line bg-ivory py-1 text-xs font-medium text-ink/70";
 
-export const tagPillDark =
-  "rounded-full border border-ivory/30 px-3 py-1 text-xs font-medium text-ivory/80";
+export const tagPill = `${tagPillBase} px-3`;
+
+export const tagPillWithIcon = `${tagPillBase} gap-2 pr-3 pl-1.5`;
 
 /** Attributes every link that leaves the site should carry. */
 export const externalLinkProps = {

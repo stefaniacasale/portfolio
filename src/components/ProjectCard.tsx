@@ -1,5 +1,6 @@
 import type { ProjectItem } from "@/data/content";
-import { tagPill } from "./ui";
+import TagIcon from "./TagIcon";
+import { tagPill, tagPillWithIcon } from "./ui";
 
 type ProjectCardProps = {
   item: ProjectItem;
@@ -16,8 +17,9 @@ export default function ProjectCard({ item }: ProjectCardProps) {
       <p className="mt-5 text-sm leading-relaxed text-ink/75">{item.body}</p>
       <ul className="mt-auto flex flex-wrap gap-2 pt-8">
         {item.tags.map((tag) => (
-          <li key={tag} className={tagPill}>
-            {tag}
+          <li key={tag.label} className={tag.icon ? tagPillWithIcon : tagPill}>
+            <TagIcon icon={tag.icon} label={tag.label} />
+            {tag.label}
           </li>
         ))}
       </ul>

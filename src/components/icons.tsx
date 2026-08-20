@@ -76,3 +76,76 @@ export function CloseIcon({ className = "size-5" }: IconProps) {
     </svg>
   );
 }
+
+export function PauseIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <rect x="7" y="5" width="3.5" height="14" rx="1.25" />
+      <rect x="13.5" y="5" width="3.5" height="14" rx="1.25" />
+    </svg>
+  );
+}
+
+export function PlayIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <path d="M8.4 5.2a1 1 0 0 1 1.53-.85l9 6.8a1 1 0 0 1 0 1.7l-9 6.8a1 1 0 0 1-1.53-.85V5.2Z" />
+    </svg>
+  );
+}
+
+/** Three linked nodes, used for the "Social media" tag. */
+export function ShareIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <circle cx="17.5" cy="5.5" r="2.6" />
+      <circle cx="6.5" cy="12" r="2.6" />
+      <circle cx="17.5" cy="18.5" r="2.6" />
+      <path d="M8.9 10.7 15.1 6.9" />
+      <path d="M8.9 13.3 15.1 17.1" />
+    </svg>
+  );
+}
+
+/** Heart held in an open hand, used for the "Non profit" tag. */
+export function HeartIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <path d="M12 11.6 8.9 8.6a2.4 2.4 0 0 1 3.1-3.6 2.4 2.4 0 0 1 3.1 3.6L12 11.6Z" />
+      <path d="M3.5 14.2a2 2 0 0 1 2.8 0l1.8 1.8h3.3a1.6 1.6 0 0 1 0 3.2H9.6" />
+      <path d="M10.2 19.2h3.4l5-3.1a1.7 1.7 0 0 1 2.1 2.6l-4.4 3.4H6.3l-2.8-2.8" />
+    </svg>
+  );
+}

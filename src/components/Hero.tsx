@@ -5,22 +5,19 @@ import { ArrowUpRightIcon, LinkedInIcon } from "./icons";
 import {
   container,
   externalLinkProps,
-  kicker,
   pillPrimary,
   pillSecondary,
 } from "./ui";
 
-/** The two phrases that carry the italic serif accent in the headline. */
-const headlineAccents = ["informs", "follows through"];
+/** The name carries the italic serif accent in the headline. */
+const headlineAccents = [site.name];
 
 export default function Hero() {
   return (
     <section id="top" className={`${container} pt-12 pb-14 lg:pt-20 lg:pb-16`}>
       <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
         <div className="rise-in">
-          <p className={kicker}>{hero.kicker}</p>
-
-          <h1 className="hero-display mt-5 font-extrabold tracking-tight break-words text-balance">
+          <h1 className="hero-display font-extrabold tracking-tight break-words text-balance">
             <AccentText text={hero.headline} accents={headlineAccents} />
           </h1>
 

@@ -1,27 +1,47 @@
 import AccentText from "@/components/AccentText";
 import ContactPanel from "@/components/ContactPanel";
-import ExperienceEntry from "@/components/ExperienceEntry";
+import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import ImpactCard from "@/components/ImpactCard";
+import LogoCarousel from "@/components/LogoCarousel";
+import LogoImage, { isLogoAsset } from "@/components/LogoImage";
 import MetricCard from "@/components/MetricCard";
 import Nav from "@/components/Nav";
-import OrgStrip from "@/components/OrgStrip";
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeading from "@/components/SectionHeading";
 import SkillGroup from "@/components/SkillGroup";
-import { container, kicker, section } from "@/components/ui";
+import { ArrowUpRightIcon } from "@/components/icons";
+import {
+  container,
+  externalLinkProps,
+  kicker,
+  section,
+} from "@/components/ui";
 import {
   about,
   certifications,
   education,
   experience,
-  impact,
   metrics,
   projects,
   skills,
-  strengths,
 } from "@/data/content";
+
+const certificationRow = "-mx-3 flex items-start gap-4 rounded-2xl px-3 py-5";
+
+const chip =
+  "inline-flex h-10 min-w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-ivory-warm px-2";
+
+/** Issuer mark for a certification row. Same tile size for every issuer. */
+function CertificationMark({ logo }: { logo?: string }) {
+  if (!isLogoAsset(logo)) return null;
+
+  return (
+    <span className={`${chip} mt-0.5`}>
+      <LogoImage src={logo} slot={26} maxWidth={72} />
+    </span>
+  );
+}
 
 export default function Home() {
   return (
@@ -47,32 +67,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Strengths */}
-        <section className={`${container} ${section}`}>
-          <SectionHeading label="What I bring">
-            Five areas of strength.
-          </SectionHeading>
-          <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-5 lg:gap-x-6">
-            {strengths.map((strength) => (
-              <div key={strength.title} className="border-t border-line pt-5">
-                <h3 className="font-semibold tracking-tight">
-                  {strength.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  {strength.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <OrgStrip />
+        <LogoCarousel />
 
         {/* About */}
         <section id="about" className={`${container} ${section}`}>
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <SectionHeading label="About" className="lg:sticky lg:top-28 lg:self-start">
-              <AccentText text={about.heading} accents={["comfortable"]} />
+              <AccentText text={about.heading} accents={["me"]} />
             </SectionHeading>
             <div className="space-y-6">
               {about.paragraphs.map((paragraph) => (
@@ -84,39 +85,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Selected impact */}
-        <section id="impact" className={`${container} ${section}`}>
-          <SectionHeading label="Selected impact">
-            Work I am proud of.
+        {/* Experience */}
+        <section id="experience" className={`${container} ${section}`}>
+          <SectionHeading label="Professional experience">
+            Experience.
           </SectionHeading>
           <div className="mt-12 flex flex-col gap-6 lg:mt-16">
-            {impact.map((item, index) => (
-              <ImpactCard
-                key={item.title}
-                item={item}
-                tone={index === 1 ? "dark" : "light"}
-              />
+            {experience.map((item) => (
+              <ExperienceCard key={`${item.role}-${item.period}`} item={item} />
             ))}
           </div>
         </section>
 
-        {/* Experience */}
-        <section id="experience" className={`${container} ${section}`}>
-          <SectionHeading label="Professional experience">
-            Where I have worked.
-          </SectionHeading>
-          <ul className="mt-12 border-b border-line lg:mt-16">
-            {experience.map((item) => (
-              <ExperienceEntry key={`${item.role}-${item.period}`} item={item} />
-            ))}
-          </ul>
-        </section>
-
         {/* Projects */}
         <section id="projects" className={`${container} ${section}`}>
-          <SectionHeading label="University projects">
-            Projects from my degree.
-          </SectionHeading>
+          <SectionHeading label="Projects">Projects.</SectionHeading>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:mt-16">
             {projects.map((item) => (
               <ProjectCard key={item.title} item={item} />
@@ -124,10 +107,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Skills, certifications, education */}
+        {/* Skills and certifications */}
         <section id="skills" className={`${container} ${section}`}>
-          <SectionHeading label="Skills and credentials">
-            Tools, certifications, and education.
+          <SectionHeading label="Skills and certifications">
+            Tools and certifications.
           </SectionHeading>
 
           <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:mt-16">
@@ -136,38 +119,66 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-            <div>
-              <h3 className={kicker}>Certifications</h3>
-              <ul className="mt-6 border-t border-line">
-                {certifications.map((certification) => (
-                  <li
-                    key={certification.title}
-                    className="border-b border-line py-5"
-                  >
-                    <p className="font-semibold tracking-tight">
-                      {certification.title}
-                    </p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink/70">
-                      {certification.issuer}
-                    </p>
-                    {certification.year ? (
-                      <p className="mt-1 text-sm text-ink/65">
-                        {certification.year}
-                      </p>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-16">
+            <h3 className={kicker}>Certifications</h3>
+            <ul className="mt-6 border-t border-line">
+              {certifications.map((certification) => {
+                const body = (
+                  <>
+                    <CertificationMark logo={certification.logo} />
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-semibold tracking-tight">
+                        {certification.title}
+                      </span>
+                      <span className="mt-1.5 block text-sm leading-relaxed text-ink/70">
+                        {certification.issuer}
+                      </span>
+                      {certification.year ? (
+                        <span className="mt-1 block text-sm text-ink/65">
+                          {certification.year}
+                        </span>
+                      ) : null}
+                    </span>
+                  </>
+                );
 
-            <div className="h-fit rounded-3xl border border-line bg-sand-soft p-6 sm:p-8">
-              <h3 className={kicker}>Education</h3>
-              <p className="mt-4 text-xl font-bold tracking-tight text-balance">
+                return (
+                  <li key={certification.title} className="border-b border-line">
+                    {certification.href ? (
+                      <a
+                        href={certification.href}
+                        {...externalLinkProps}
+                        aria-label={`${certification.title}, opens in new tab`}
+                        className={`${certificationRow} group transition-colors duration-200 hover:bg-sand-soft/70`}
+                      >
+                        {body}
+                        <ArrowUpRightIcon className="mt-1 size-4 shrink-0 text-ink/50 transition-colors duration-200 group-hover:text-ink" />
+                      </a>
+                    ) : (
+                      <div className={certificationRow}>{body}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+
+        {/* Education */}
+        <section id="education" className={`${container} ${section}`}>
+          <SectionHeading label="Education">Education.</SectionHeading>
+          <div className="mt-12 rounded-3xl border border-line bg-sand-soft p-6 sm:p-8 lg:mt-16 lg:flex lg:items-center lg:gap-10 lg:p-10">
+            <span className="inline-flex shrink-0 items-center justify-center rounded-2xl border border-line bg-ivory-warm px-5 py-4">
+              <LogoImage src={education.logo} slot={52} maxWidth={160} />
+            </span>
+            <div className="mt-6 lg:mt-0">
+              <p className="text-2xl font-bold tracking-tight text-balance">
+                {education.school}
+              </p>
+              <p className="mt-2 text-xl font-medium tracking-tight text-balance text-ink/80">
                 {education.degree}
               </p>
-              <p className="mt-2 font-medium text-ink/75">{education.school}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink/70">
+              <p className="mt-3 text-sm leading-relaxed text-ink/75">
                 {education.detail}
               </p>
               <p className="mt-5 text-sm font-semibold tabular-nums">

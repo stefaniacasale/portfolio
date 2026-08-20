@@ -34,17 +34,19 @@ body {
 }
 
 /*
- * Hero display scale. The upper bound is set by the longest single word in the
- * headline ("Communication"), which must never overflow the 7fr hero column.
+ * Hero display scale. The headline is short ("Hi, I'm Stefania Casale."), so it
+ * can run larger than a sentence headline would. The upper bound is set by the
+ * serif accent line "Stefania Casale." fitting the 7fr hero column, and the
+ * lower bound by the same line clearing a 320px viewport.
  */
 .hero-display {
-  font-size: clamp(2.125rem, calc(12.5vw - 0.4rem), 4rem);
-  line-height: 0.98;
+  font-size: clamp(2.5rem, calc(10vw + 0.5rem), 4.25rem);
+  line-height: 1;
 }
 
 @media (min-width: 1280px) {
   .hero-display {
-    font-size: 4.5rem;
+    font-size: 4.75rem;
   }
 }
 
@@ -74,6 +76,49 @@ body {
   animation-delay: 110ms;
 }
 
+/*
+ * Logo marquee. The track holds two identical copies of the logo row, so
+ * sliding it by half its own width lands exactly on the start of the second
+ * copy and the loop is seamless.
+ */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Softens the hard clip where logos enter and leave the strip. */
+.marquee-viewport {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 1.25rem,
+    #000 calc(100% - 1.25rem),
+    transparent
+  );
+}
+
+/*
+ * The strip carries six logos in six different brand palettes. Flattening them
+ * all to the site's ink tone keeps the row reading as one quiet line rather
+ * than a row of competing badges. Scoped to the marquee: everywhere else the
+ * logos keep their own colour.
+ */
+.marquee-logo {
+  filter: brightness(0) saturate(0) opacity(0.72);
+}
+
+.marquee-track {
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-track[data-paused="true"] {
+  animation-play-state: paused;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -89,6 +134,11 @@ html {
 
   .rise-in,
   .rise-in-late {
+    animation: none;
+  }
+
+  /* The marquee stays put and its pause control is hidden by Tailwind. */
+  .marquee-track {
     animation: none;
   }
 }

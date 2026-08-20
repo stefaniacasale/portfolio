@@ -1,4 +1,5 @@
 import type { Metric } from "@/data/content";
+import CountUpValue from "./CountUpValue";
 
 type MetricCardProps = {
   metric: Metric;
@@ -13,8 +14,13 @@ export default function MetricCard({ metric, accent = false }: MetricCardProps) 
         accent ? "bg-sand-soft" : "bg-ivory-warm"
       }`}
     >
-      <p className="text-[clamp(1.75rem,5.5vw,2.75rem)] leading-none font-extrabold tracking-tight tabular-nums">
-        {metric.value}
+      {/*
+        Scale is set by the longest value, "3.82/4.0". The binding cases are the
+        two column grid at 360px and the four column grid at 1024px, where this
+        leaves roughly 15px of slack rather than the 2px the previous scale did.
+      */}
+      <p className="text-[clamp(1.5rem,5vw,2.5rem)] leading-none font-extrabold tracking-tight tabular-nums">
+        <CountUpValue value={metric.value} />
       </p>
       <p className="mt-5 text-sm leading-snug text-ink/70">{metric.label}</p>
     </div>

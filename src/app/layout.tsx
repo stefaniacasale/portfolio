@@ -51,7 +51,7 @@ const personJsonLd = {
   },
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Mississauga",
+    addressLocality: "Toronto",
     addressRegion: "Ontario",
     addressCountry: "CA",
   },
@@ -64,6 +64,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${archivo.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        {/*
+          The metric cards ship their zero state so the count up does not snap
+          backwards at hydration. With scripting off nothing would ever count,
+          so the final value is swapped in instead. Reduced motion is handled
+          the same way, through Tailwind's motion-reduce variants.
+        */}
+        <noscript>
+          <style>{`.count-up-final{visibility:visible}.count-up-live{display:none}`}</style>
+        </noscript>
         {children}
         <script
           type="application/ld+json"
