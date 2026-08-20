@@ -10,7 +10,7 @@ import Nav from "@/components/Nav";
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeading from "@/components/SectionHeading";
 import SkillGroup from "@/components/SkillGroup";
-import { ArrowUpRightIcon } from "@/components/icons";
+import { ArrowUpRightIcon, MapPinIcon } from "@/components/icons";
 import {
   container,
   externalLinkProps,
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui";
 import {
   about,
+  site,
   certifications,
   education,
   experience,
@@ -72,9 +73,20 @@ export default function Home() {
         {/* About */}
         <section id="about" className={`${container} ${section}`}>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <SectionHeading>
-              <AccentText text={about.heading} accents={["me"]} />
-            </SectionHeading>
+            {/*
+              Heading and location travel together as one block, so the grid's
+              lg:items-center balances the pair against the paragraphs rather
+              than centring the title alone.
+            */}
+            <div>
+              <SectionHeading>
+                <AccentText text={about.heading} accents={["me"]} />
+              </SectionHeading>
+              <p className="mt-5 flex items-center gap-2 text-sm font-medium text-ink/70">
+                <MapPinIcon className="size-4 shrink-0 text-ink" />
+                {site.locationShort}
+              </p>
+            </div>
             <div className="space-y-6">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph} className="leading-loose text-ink/80">

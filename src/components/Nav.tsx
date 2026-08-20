@@ -93,10 +93,10 @@ export default function Nav() {
           </a>
           <a
             href={`mailto:${site.email}`}
-            aria-label={`Email ${site.name}`}
+            aria-label={`Contact ${site.name} by email`}
             className={`${pillPrimary} whitespace-nowrap`}
           >
-            Email me
+            Contact
           </a>
         </nav>
 
@@ -142,11 +142,11 @@ export default function Nav() {
               </a>
               <a
                 href={`mailto:${site.email}`}
-                aria-label={`Email ${site.name}`}
+                aria-label={`Contact ${site.name} by email`}
                 onClick={() => close()}
                 className={pillPrimary}
               >
-                Email me
+                Contact
               </a>
             </div>
           </nav>

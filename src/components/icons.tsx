@@ -106,6 +106,26 @@ export function PlayIcon({ className = "size-4" }: IconProps) {
   );
 }
 
+/** Map pin, used for the location line in the about section. */
+export function MapPinIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <path d="M12 21.4c4.2-4.3 6.3-7.7 6.3-10.3a6.3 6.3 0 1 0-12.6 0c0 2.6 2.1 6 6.3 10.3Z" />
+      <circle cx="12" cy="11" r="2.4" />
+    </svg>
+  );
+}
+
 /** Three linked nodes, used for the "Social media" tag. */
 export function ShareIcon({ className = "size-4" }: IconProps) {
   return (

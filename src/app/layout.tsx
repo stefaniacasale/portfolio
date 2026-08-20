@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Instrument_Serif } from "next/font/google";
-import { site, hero } from "@/data/content";
+import { site } from "@/data/content";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -19,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 const title = "Stefania Casale | Digital Communications and Client Experience";
-const description = hero.intro;
+const description = site.metaDescription;
 
 export const metadata: Metadata = {
   // metadataBase is intentionally unset: the production URL is not decided yet.

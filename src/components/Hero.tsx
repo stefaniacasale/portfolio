@@ -21,17 +21,13 @@ export default function Hero() {
             <AccentText text={hero.headline} accents={headlineAccents} />
           </h1>
 
-          <p className="mt-7 max-w-prose text-lg leading-relaxed text-ink/80">
-            {hero.intro}
-          </p>
-
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={`mailto:${site.email}`}
-              aria-label={`Email ${site.name}`}
+              aria-label={`Contact ${site.name} by email`}
               className={pillPrimary}
             >
-              Email me
+              Contact
             </a>
             <a
               href={site.linkedin}
@@ -45,17 +41,13 @@ export default function Hero() {
             </a>
           </div>
 
-          <ul className="mt-10 space-y-3 border-t border-line pt-8">
-            {hero.facts.map((fact) => (
-              <li
-                key={fact}
-                className="flex items-start gap-3 text-sm leading-relaxed text-ink/75"
-              >
-                <span aria-hidden="true" className="mt-[0.45em] size-2 shrink-0 bg-sand" />
-                {fact}
-              </li>
-            ))}
-          </ul>
+          {/*
+            The rule splits the masthead from the body copy, so the column reads
+            as two deliberate parts rather than one undifferentiated stack.
+          */}
+          <p className="mt-10 max-w-prose border-t border-line pt-8 text-lg leading-relaxed text-ink/80">
+            {hero.intro}
+          </p>
         </div>
 
         <div className="rise-in-late mx-auto w-full max-w-sm lg:max-w-none">

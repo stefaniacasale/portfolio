@@ -15,9 +15,17 @@ export interface Site {
   name: string;
   role: string;
   location: string;
+  /** Abbreviated form, for tight spots such as the about location line. */
+  locationShort: string;
   email: string;
   linkedin: string;
   resumeHref: string;
+  /**
+   * Search and social description. Kept separate from `hero.intro` so the page
+   * copy can run as long as it needs to without overflowing the ~160 character
+   * budget search engines display.
+   */
+  metaDescription: string;
   /**
    * Optional path to a headshot in /public. When unset, the hero renders a
    * typographic monogram instead.
@@ -28,7 +36,6 @@ export interface Site {
 export interface Hero {
   headline: string;
   intro: string;
-  facts: string[];
 }
 
 export interface Metric {
@@ -104,9 +111,12 @@ export const site: Site = {
   name: "Stefania Casale",
   role: "Digital communications and client experience",
   location: "Toronto, Ontario",
+  locationShort: "Toronto, ON",
   email: "stefania.casale@alumni.utoronto.ca",
   linkedin: "https://www.linkedin.com/in/stefania-casale/",
   resumeHref: "/Stefania-Casale-Resume.pdf",
+  metaDescription:
+    "Portfolio of Stefania Casale, a University of Toronto graduate focused on digital communications, marketing, and client experience roles in the Toronto area.",
 };
 
 /**
@@ -116,12 +126,7 @@ export const site: Site = {
 export const hero: Hero = {
   headline: "Hi, I'm Stefania Casale.",
   intro:
-    "I am a University of Toronto graduate with experience in digital communications, client support, and day to day operations. I have produced campaigns for the City of Mississauga, supported complex client requests at Wealthsimple, and coordinated student outreach at U of T.",
-  facts: [
-    "Based in Toronto, Ontario",
-    "Honours BA, Digital Enterprise Management, 2025",
-    "Open to digital communications, marketing, and client experience roles",
-  ],
+    "I am a University of Toronto graduate with experience in digital communications, client support, and day to day operations. I have produced campaigns for the City of Mississauga, supported complex client requests at Wealthsimple, and coordinated student outreach at U of T. I am focused on roles in digital communications, marketing, and client experience.",
 };
 
 export const metrics: Metric[] = [
